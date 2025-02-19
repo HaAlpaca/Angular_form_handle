@@ -1,0 +1,48 @@
+<div class="container">
+  <form
+    class="sign-in-form"
+    [formGroup]="signInForm"
+    (ngSubmit)="onSubmit(signInForm)"
+  >
+    <h2>Sign in with Reactive Form</h2>
+    <div class="row-control">
+      <mat-form-field appearance="outline">
+        <mat-label>Username</mat-label>
+        <input matInput placeholder="Username" formControlName="username" />
+      </mat-form-field>
+      <pre>
+        <code>{{ signInForm.controls.username.errors | json }}</code>
+      </pre>
+    </div>
+    <div class="row-control">
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input
+          type="password"
+          matInput
+          placeholder="Password"
+          formControlName="password"
+        />
+      </mat-form-field>
+      <pre>
+        <code>{{ signInForm.controls.password.errors | json }}</code>
+      </pre>
+    </div>
+    <div class="row-control">
+      <mat-checkbox formControlName="rememberMe">Remember me</mat-checkbox>
+    </div>
+    <div class="row-control row-actions">
+      <button
+        mat-raised-button
+        [disabled]="signInForm.invalid"
+        color="primary"
+        type="submit"
+      >
+        Sign in
+      </button>
+    </div>
+    <pre>
+      <code>{{ signInForm.value | json }}</code>
+    </pre>
+  </form>
+</div>
