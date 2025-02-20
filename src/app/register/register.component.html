@@ -1,0 +1,54 @@
+<div class="container">
+  <form
+    class="register-form"
+    [formGroup]="registerForm"
+    autocomplete="off"
+    (ngSubmit)="formSubmit$.next(null)"
+  >
+    <h2>Register</h2>
+    <h5>Try duplicated username: HaAlpaca</h5>
+    <div class="row-control">
+      <mat-form-field appearance="outline">
+        <mat-label>Username</mat-label>
+        <input matInput placeholder="Username" formControlName="username" />
+      </mat-form-field>
+      <pre>{{ registerForm.get("username")?.errors | json }}</pre>
+    </div>
+    <div class="row-control">
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input
+          type="password"
+          matInput
+          placeholder="Password"
+          formControlName="password"
+        />
+      </mat-form-field>
+      <pre>{{ registerForm.get("password")?.errors | json }}</pre>
+    </div>
+    <div class="row-control">
+      <mat-form-field appearance="outline">
+        <mat-label>Confirm Password</mat-label>
+        <input
+          type="password"
+          matInput
+          placeholder="Confirm Password"
+          formControlName="confirmPassword"
+        />
+      </mat-form-field>
+      <pre>{{ registerForm.get("confirmPassword")?.errors | json }}</pre>
+    </div>
+    <div class="row-control row-actions">
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="registerForm.invalid"
+      >
+        Register
+      </button>
+    </div>
+    <pre>Form group error: {{ registerForm.errors | json }}</pre>
+    <pre>{{ registerForm.value | json }}</pre>
+  </form>
+</div>
